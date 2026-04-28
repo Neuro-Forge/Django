@@ -1,8 +1,7 @@
-.App{
-  display: flex;
-  justify-content: center;
- font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
- font-size: x-large;
- font-style: unset;
-
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+ caret-color: transparent;
 }

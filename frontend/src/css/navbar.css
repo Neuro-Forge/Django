@@ -1,0 +1,62 @@
+.navbar{
+    position: fixed;
+    top:0;
+    width: 100px;
+    z-index: 10;
+    background:rgb(255, 225, 237 );
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.navcontainer{
+   max-width: 1200px;
+   margin: auto;
+    padding: 20px 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.navlogo{
+    font-size :1.2em;
+    font-weight: 600;
+    color: brown;
+
+}
+
+.navlogo span{
+    text-decoration: none;
+    font-size: 0.95em;
+    font-weight: 500;
+    color: black;
+    position: relative;
+
+}
+
+.nav-links a::after{
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0px;
+    height: 2px;
+    background: blanchedalmond;
+
+}
+
+.nav-links a:hover::after{
+    width: 100%;
+    transition: 0.3s;
+}
+
+.nav-btn{
+
+    background:tomato;
+    color: white;
+    border: none;
+    padding: 10px 26px;
+    border-radius: 999px;
+    font-weight: 600;
+    cursor: pointer;
+    
+}
