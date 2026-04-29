@@ -1,4 +1,68 @@
-body {
-  margin: 0;
-  /* Adjust based on header height */
+body{
+    background-color: black;
+    color: white;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+:root {
+  --primary-bg: rgba(30, 30, 30, 0.85);
+  --hover-bg: rgba(30, 30, 30, 0.9);
+  --blur: blur(10px);
+  --border-radius: 14px;
+  --box-shadow: 0px 8px 25px rgba(255, 255, 255, 0.1);
+  --hover-box-shadow: 0px 12px 30px rgba(255, 255, 255, 0.2);
+  --border: 1px solid rgba(255, 255, 255, 0.2);
+  --highlight-color: #ffcc00;
+  --button-gradient: linear-gradient(135deg, #ff7b00, #ff3d00);
+  --button-hover-gradient: linear-gradient(135deg, #ff3d00, #ff7b00);
+  --transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+}
+
+.search-container{
+    position: relative;
+    max-width: 400px;
+    width: 100%;
+    
+}
+
+.search-input{
+padding-right:45px;
+    border-radius: 25px;
+}
+
+.search-button{
+    position: absolute;
+    right: 0px;
+     top: 50%;
+    transform: translateY(-50%);
+    border-radius: 25px;
+
+}
+
+.categoty-link{
+    font-weight: bold;
+    color: white;
+    transition: color 0.3s ease-in-out,trasform 0.3s;
+    padding: 6px 12px;
+    border-radius: 8px;
+
+}
+.categoty-link:hover{
+    color: var(--highlight-color);
+    transform: translateY(-2px);
+}
+
+.card-btn{
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: background 0.3s ease-in-out, transform 0.3s;
+}
+.card-btn:hover{
+    background: var(--hover-bg);
+    transform: translateY(-2px);
 }
