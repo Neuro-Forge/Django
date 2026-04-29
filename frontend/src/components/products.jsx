@@ -1,14 +1,18 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { shopbycategory as Shopbycategory } from './shopbycategory'
+
 
 export const Products = ({items}) => {
   return (
-    <div className='container my-5'>
-      <div className='row d-flex justify-content-center'>
+    <>
+      <Shopbycategory />
+      <div className='container my-5'>
+        <div className='row d-flex justify-content-center'>
         {items?.map((product, index) => (
           <div 
             key={product.id || index} 
-            className='col-lg-3 col-md-6 col-sm-6 my-3 d-flex justify-content-center'>
+            className='col-lg-3 col-md-6 col-sm-6 my-3 d-flex justify-content-center align-items-center'>
             
             <div className='card product-card h-100'>
               <Link to={`/product/${product.id}`} className='image-container'>
@@ -33,6 +37,7 @@ export const Products = ({items}) => {
           </div>
         ))}
       </div>
-    </div>
+      </div>
+    </>
   )
 }
