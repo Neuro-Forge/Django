@@ -66,3 +66,36 @@ padding-right:45px;
     background: var(--hover-bg);
     transform: translateY(-2px);
 }
+
+/* video palyer */
+
+.video-container {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  height: 95vh;
+  margin: auto;
+  border-radius: 5px;
+  overflow:hidden;
+}
+
+.video-player{
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--border-radius);
+
+}
+
+.card{
+    background: rgb(95, 95, 95);
+    border: var(--border);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+}
+.card:hover{
+    background: var(--hover-bg);
+    box-shadow: var(--hover-box-shadow);
+    transform: translateY(-5px);
+}
