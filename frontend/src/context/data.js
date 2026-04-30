@@ -209,7 +209,7 @@ export const Videos = [
   {
     category: "laptops",
     name: "MacBook",
-    url: "https://www.apple.com/105/media/us/mac/family/2025/59856fc1-d007-421a-90ee-734ddf3fd25d/anim/welcome/large.mp4",
+    url: "https://www.apple.com/105/media/us/macbook-neo/2026/eee281c9-06d4-45d9-9a37-ef16ad413279/anim/highlights-colors/large.mp4",
   },
   {
     category: "tablets",
@@ -224,8 +224,13 @@ export const Videos = [
   {
     category: "tv & entertainment",
     name: "Apple TV & Entertainment",
-    url: "https://www.apple.com/105/media/us/services/2024/a8e4c2f2-5eaa-476d-b419-e6faf9237070/anim/sizzle/large.mp4",
+    url: "https://www.apple.com/105/media/us/apple-tv/2025/2c396a76-1ae6-4ccd-8786-c879e3d1e76b/anim/sizzle/large.mp4",
   },
+  {
+    category: "samsung s series",
+    name: "samsung galaxy",
+    url: "https://images.samsung.com/is/content/samsung/assets/in/s2602/pcd/smartphones/PCD_Header-KV_Galaxy-S26-Ultra_PC_1440x640_LTR.mp4"
+  }
 ];
 
 

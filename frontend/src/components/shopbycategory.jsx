@@ -8,23 +8,39 @@ import {items} from '../context/data'
 
 
 const products = [
-    {name:'Mobiles',icon:<FaMobileAlt size={30} color='blue'/>},
-    {name:'Laptops',icon:<FaLaptop size={30} color='blue'/>},
-    {name:'Tablets',icon:<FaTablet size={30} color='blue'/>},
-    {name:'Watches',icon:<FaClock size={30} color='blue'/>},
-    {name:'Accessories',icon:<FaThLarge size={30} color='blue'/>},
-    {name:'Offers',icon:<FaRubleSign size={30} color='blue'/>}
+    {name:'Mobiles',icon:<FaMobileAlt size={20} color='blue'/>},
+    {name:'Laptops',icon:<FaLaptop size={20} color='blue'/>},
+    {name:'Tablets',icon:<FaTablet size={20} color='blue'/>},
+    {name:'Watches',icon:<FaClock size={20} color='blue'/>},
+    {name:'All products',icon:<FaThLarge size={20} color='blue'/>},
 ]
 
-const price = [1000,2000,3000,4000,5000,6000,7000,8000,9000,10000]
+const price = [30000,40000,50000,60000,70000,80000]
 export const shopbycategory = () => {
-    const {setproducts} = useContext(Datacontext)
+    // Use setProducts (capital P) to match the context provider
+    const {setProducts} = useContext(Datacontext)
 
-    const [selectedprice, setSelectedprice] = useState(10000)
-    const  filterbycategory = (cat) =>{
-        setproducts(items.filter(pro =>pro.category.toLowerCase() === cat.toLowerCase()))
-
+    const [selectedprice, setSelectedprice] = useState(80000)
+    
+    // Filter products by category
+    const filterbycategory = (cat) =>{
+        // Handle "All products" case
+        if (cat.toLowerCase() === 'all products' || cat.toLowerCase() === 'all') {
+            setProducts(items)
+        } else {
+            setProducts(items.filter(pro =>pro.category.toLowerCase() === cat.toLowerCase()))
+        }
     }
+    
+    // Filter products by price - fixed implementation
+    const filterByPrice = (maxPrice) => {
+        setSelectedprice(maxPrice)
+        
+        // Use the currently filtered products or all items
+        const currentProducts = items.filter(pro => parseInt(pro.price) <= maxPrice)
+        setProducts(currentProducts)
+    }
+
   return (
     <div className="container bg-dark text-light my-4 p-4 rounded shadow-lg">
       <h3 className="text-center mb-3">Filter Products</h3>

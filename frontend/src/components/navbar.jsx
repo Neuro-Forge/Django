@@ -31,7 +31,7 @@ export const Navbar = () => {
             <form>
                 <ul className='navbar-abv max-auto d-flex gap-2'>
 
-                    {["All", "Mobiles", "Fashion", "Electronics",  "Beauty"].map((item)=>
+                    {[ "Mobiles", "Fashion", "Electronics",  "Beauty"].map((item)=>
                      <ul key={item}>
                         <Link to={`/product/category/${item}`} className='nav-link text-white text-decoration-none categoty-link'>
                             {item}
