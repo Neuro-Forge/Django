@@ -1,6 +1,13 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-# Create your views here.
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .serializer import registerserializer
 
-def main(request):
-    return render(request, "home.html")
+@api_view(['POST'])
+def register(request):
+    serializer = registerserializer(data=request.data)
+    
+    if serializer.is_valid():
+        serializer.save()
+        return Response({"message": "User registered successfully"}, status=201)
+    
+    return Response(serializer.errors, status=400)

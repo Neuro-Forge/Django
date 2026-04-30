@@ -1,30 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
-export const register = () => {
-  return (
-    <StyledWrapper>
-      <div className="form-container">
-        <div className="login">
-          <div className="hader">
-            <span className='join'>Join us today!</span>
-            <p>Sign up now to become a member.</p>
-          </div>
-          <form action="#">
-            <input type="text" placeholder="Enter Name" required />
-            <input type="email" placeholder="Enter Email" required />
-            <input type="password" placeholder="Choose A Password" required />
-            <input type="password" placeholder="Re-Enter Password" required />
-            <input type="submit" defaultValue="Signup" />
-            <span className="account-span"> Already a member? <Link to="/login" className="link">Login Here</Link></span>
-          </form>
-        </div>
-      </div>
-    </StyledWrapper>
-  );
-}
-
+// Define styled component FIRST (before using it)
 const StyledWrapper = styled.div`
   min-height: 100vh;
   width: 100%;
@@ -56,7 +35,6 @@ const StyledWrapper = styled.div`
     text-align: center;
     font-size: 28px;
     font-weight: 700;
-    color: #151717;
   }
 
   .hader p {
@@ -65,6 +43,10 @@ const StyledWrapper = styled.div`
     font-weight: 400;
     color: #706b6b;
     margin: 5px 0 0 0;
+  }
+
+  .join {
+    color: #151717;
   }
 
   form {
@@ -121,4 +103,106 @@ const StyledWrapper = styled.div`
   }
 `;
 
-export default register;
+export const Register = () => {
+
+  const [formData, setFormData] = useState({
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: ""
+  });
+
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (formData.password !== formData.confirmPassword) {
+      alert("Passwords do not match");
+      return;
+    }
+
+    try {
+      const res = await axios.post(
+        "http://127.0.0.1:8000",
+        {
+          username: formData.username,
+          email: formData.email,
+          password: formData.password
+        }
+      );
+
+      alert("User registered successfully");
+      console.log(res.data);
+
+    } catch (error) {
+      console.log(error.response?.data);
+      alert("Registration failed");
+    }
+  };
+
+  return (
+    <StyledWrapper>
+      <div className="form-container">
+        <div className="login">
+          <div className="hader">
+            <span className="join">Join us today!</span>
+            <p>Sign up now to become a member.</p>
+          </div>
+
+          <form onSubmit={handleSubmit}>
+            <input 
+              type="text" 
+              name="username"
+              placeholder="Enter Name" 
+              required 
+              onChange={handleChange}
+            />
+
+            <input 
+              type="email" 
+              name="email"
+              placeholder="Enter Email" 
+              required 
+              onChange={handleChange}
+            />
+
+            <input 
+              type="password" 
+              name="password"
+              placeholder="Choose A Password" 
+              required 
+              onChange={handleChange}
+            />
+
+            <input 
+              type="password" 
+              name="confirmPassword"
+              placeholder="Re-Enter Password" 
+              required 
+              onChange={handleChange}
+            />
+
+            <input type="submit" value="Signup" />
+
+            <span className="account-span">
+              Already a member? 
+              <Link to="/login" className="link">Login Here</Link>
+            </span>
+
+          </form>
+        </div>
+      </div>
+    </StyledWrapper>
+  );
+};
+
+export default Register;
