@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Card = () => {
   return (
@@ -27,7 +28,7 @@ export const Card = () => {
             <span className="span">Forgot password?</span>
           </div>
           <button className="button-submit">Sign In</button>
-          <p className="p">Don't have an account? <span className="span" >Sign Up</span>
+          <p className="p">Don't have an account? <Link to="/signup" className="span">Sign Up</Link>
           </p><p className="p line">Or Continue With</p>
           <div className="flex-row">
             <button className="btn google">
@@ -61,7 +62,7 @@ const StyledWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #7c8fe5 0%, #6bb7d4 100%);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   padding: 20px;
   box-sizing: border-box;
 
@@ -142,6 +143,11 @@ const StyledWrapper = styled.div`
     color: #2d79f3;
     font-weight: 500;
     cursor: pointer;
+    text-decoration: none;
+  }
+
+  .span:hover {
+    text-decoration: underline;
   }
 
   .button-submit {
