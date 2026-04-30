@@ -18,9 +18,6 @@ export const Navbar = () => {
         </div>
 
         <div className='d-flex align-items-center gap-3'>
-            {/* <Link to='/product/search/' className='text-white text-decoration-none'>
-                <CiSearch className='fs-4' />
-            </Link> */}
             <Link to='/cart' className='text-white text-decoration-none position-relative card-btn'>
                 <BsCart4 className='fs-4' />
                 <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
@@ -41,6 +38,11 @@ export const Navbar = () => {
                 </ul>
 
             </form>
+            <div className='navbar-nav max-auto d-flex gap-2'>
+                <Link to='/login' className='text-white text-decoration-none d-flex align-items-center'>
+                    <span>Login</span>
+                </Link>
+            </div>
         </div>
     </div>
   )
