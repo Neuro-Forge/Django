@@ -101,6 +101,24 @@ const StyledWrapper = styled.div`
   .link:hover {
     text-decoration: underline;
   }
+
+  .error-message {
+    color: #dc3545;
+    font-size: 14px;
+    text-align: center;
+    padding: 10px;
+    background-color: #f8d7da;
+    border-radius: 5px;
+  }
+
+  .success-message {
+    color: #155724;
+    font-size: 14px;
+    text-align: center;
+    padding: 10px;
+    background-color: #d4edda;
+    border-radius: 5px;
+  }
 `;
 
 export const Register = () => {
@@ -109,8 +127,11 @@ export const Register = () => {
     username: "",
     email: "",
     password: "",
-    confirmPassword: ""
+    password2: ""
   });
+
+  const [message, setMessage] = useState({ type: "", text: "" });
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -124,28 +145,63 @@ export const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setMessage({ type: "", text: "" });
 
-    if (formData.password !== formData.confirmPassword) {
-      alert("Passwords do not match");
+    if (formData.password !== formData.password2) {
+      setMessage({ type: "error", text: "Passwords do not match" });
       return;
     }
 
+    if (!formData.username || !formData.email || !formData.password) {
+      setMessage({ type: "error", text: "Please fill in all fields" });
+      return;
+    }
+
+    setLoading(true);
+
     try {
-      const res = await axios.post(
-        "http://127.0.0.1:8000",
+const response = await axios.post(
+        "http://127.0.0.1:8000/api/register/",
         {
           username: formData.username,
           email: formData.email,
-          password: formData.password
+          password: formData.password,
+          password2: formData.password2
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
         }
       );
 
-      alert("User registered successfully");
-      console.log(res.data);
+      console.log("Response:", response.data);
+      setMessage({ type: "success", text: "Registration successful! Please login." });
+      
+      // Clear form
+      setFormData({
+        username: "",
+        email: "",
+        password: "",
+        password2: ""
+      });
 
     } catch (error) {
-      console.log(error.response?.data);
-      alert("Registration failed");
+      console.error("Error:", error);
+      
+      if (error.response) {
+        const errorMsg = error.response.data?.message || 
+                     error.response.data?.password?.[0] || 
+                     error.response.data?.username?.[0] || 
+                     "Registration failed";
+        setMessage({ type: "error", text: errorMsg });
+      } else if (error.request) {
+        setMessage({ type: "error", text: "Cannot connect to server. Make sure Django is running on port 8000." });
+      } else {
+        setMessage({ type: "error", text: "An error occurred. Please try again." });
+      }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -158,11 +214,18 @@ export const Register = () => {
             <p>Sign up now to become a member.</p>
           </div>
 
+          {message.text && (
+            <div className={message.type === "error" ? "error-message" : "success-message"}>
+              {message.text}
+            </div>
+          )}
+
           <form onSubmit={handleSubmit}>
             <input 
               type="text" 
               name="username"
               placeholder="Enter Name" 
+              value={formData.username}
               required 
               onChange={handleChange}
             />
@@ -171,6 +234,7 @@ export const Register = () => {
               type="email" 
               name="email"
               placeholder="Enter Email" 
+              value={formData.email}
               required 
               onChange={handleChange}
             />
@@ -179,19 +243,21 @@ export const Register = () => {
               type="password" 
               name="password"
               placeholder="Choose A Password" 
+              value={formData.password}
               required 
               onChange={handleChange}
             />
 
             <input 
               type="password" 
-              name="confirmPassword"
-              placeholder="Re-Enter Password" 
+              name="password2"
+              placeholder="Confirm Password" 
+              value={formData.password2}
               required 
               onChange={handleChange}
             />
 
-            <input type="submit" value="Signup" />
+            <input type="submit" value={loading ? "Registering..." : "Signup"} disabled={loading} />
 
             <span className="account-span">
               Already a member? 
