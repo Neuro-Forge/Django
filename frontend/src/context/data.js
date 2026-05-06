@@ -207,6 +207,54 @@ export const items = [
     price:"49990"
 
   },
+  {
+    id:23,
+    category:"mobiles",
+    title:"Apple iPhone 17 Pro Max",
+    imgSrc:"https://m.media-amazon.com/images/I/71rwU33iPuL._SL1500_.jpg",
+    amazonLink:"#",
+    description:"Apple iPhone 17 Pro Max 256 GB: 17.42 cm (6.9″) Display with Promotion, A19 Pro Chip, Best Battery Life in Any iPhone Ever, Pro Fusion Camera System, Center Stage Front Camera; Deep Blue",
+    price:"1,49,900"
+  },
+  {
+    id:24,
+    category:"mobiles",
+    title:"Samsung Galaxy Z Fold7 5G ",
+    imgSrc:"https://m.media-amazon.com/images/I/61Q1AgNSO3L._SL1500_.jpg",
+    amazonLink:"#",
+    description:"Samsung Galaxy Z Fold7 5G 256 GB (Phantom Black) - Foldable Smartphone with S Pen Support, 200MP Camera, Long Battery Life",
+    price:"1,79,900"
+
+  },
+  {
+    id:25,
+    category:"mobiles",
+    title:"XIAOMI 17 Ultra ",
+    imgSrc:"https://m.media-amazon.com/images/I/71KfhNgK6qL._SX679_.jpg",
+    amazonLink:"#",
+    description:"XIAOMI 17 Ultra 256 GB (Black) - 200MP Camera, 120W Fast Charging, Snapdragon 8 Gen 3, 17.42 cm (6.9″) AMOLED Display",
+    price:"1,39,900"
+  },
+  {
+    id:26,
+    category:"laptops",
+    title:"ASUS ProArt P16 OLED ",
+    imgSrc:"https://m.media-amazon.com/images/I/71uLxy9vW6L._SX679_.jpg",
+    amazonLink:"#",
+    description:"ASUS ProArt P16 OLED 16-inch (40.64 cm) Laptop (Intel Core i7-13700H, 32GB RAM, 1TB SSD, NVIDIA GeForce RTX 4060, Windows 11 Pro) - Star Black",
+    price:"1,79,900"
+  },
+
+  {
+    id:27,
+    category:"laptops",
+    title:"ASUS ProArt PX13 (2026) ",
+    imgSrc:"https://m.media-amazon.com/images/I/81mdgnVtmXL._SL1500_.jpg",
+    amazonLink:"#",
+    description:"ASUS ProArt PX13 (2026) 13-inch (33.02 cm) Laptop (Intel Core i7-13700H, 32GB RAM, 1TB SSD, NVIDIA GeForce RTX 4060, Windows 11 Pro) - Star Black",
+    price:"3,59,900"
+  }
+
 ];
 
 
