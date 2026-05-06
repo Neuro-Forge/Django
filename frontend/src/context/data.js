@@ -197,6 +197,16 @@ export const items = [
     description: "Apple Watch SE 2024, ultimate performance for professionals",
     price: "29990",
   },
+  {
+    id:22,
+    category:"watches",
+    title:"Galaxy Watch Ultra (2025) (LTE, 4.7 cm)",
+    imgSrc:"https://m.media-amazon.com/images/I/81JhHZ4XSpL._SL1500_.jpg",
+    amazonLink:"#",
+    description:"Galaxy Watch Ultra (2025) (LTE, 4.7 cm) - Blue Titanium",
+    price:"49990"
+
+  },
 ];
 
 
