@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 // Define styled component FIRST (before using it)
@@ -122,7 +122,7 @@ const StyledWrapper = styled.div`
 `;
 
 export const Register = () => {
-
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -185,6 +185,7 @@ const response = await axios.post(
         password: "",
         password2: ""
       });
+      navigate('/login');
 
     } catch (error) {
       console.error("Error:", error);

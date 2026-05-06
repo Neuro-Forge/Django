@@ -5,6 +5,9 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 export const Card = () => {
 
+  const navigate = useNavigate();
+
+
   const [formData, setFormData] = useState({
     email:'',
     password:''
@@ -29,7 +32,7 @@ const response = await axios.post('http://127.0.0.1:8000/api/login/',
       });
       alert("Login successful!");
       console.log(response.data);
-      useNavigate('/dashboard');
+      navigate('/products');
 
     }catch(error){
       if (error.response){

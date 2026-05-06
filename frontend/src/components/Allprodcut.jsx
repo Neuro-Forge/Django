@@ -35,8 +35,8 @@ export const All_products = (props) => {
       )}
       
       {/* Show category label */}
-      <div className="text-center my-3">
-        <h2 className="text-light">
+      <div className="text-center mt-1 mb-3">
+        <h2 className="text-light  font-weight-bold">
           {currentVideo ? `${currentVideo.name} Products` : 'All Products'}
         </h2>
         <p className="text-muted">

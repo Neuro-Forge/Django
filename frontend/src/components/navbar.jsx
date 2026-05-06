@@ -3,7 +3,15 @@ import { FaAmazon } from "react-icons/fa6";
 import { BsCart4 } from "react-icons/bs";
 import { CiSearch } from "react-icons/ci";
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 export const Navbar = () => {
+    const [term, setTerm] = useState('')
+    const navigate = useNavigate()
+    const handelsubmit = (e) => {
+        e.preventDefault()
+        navigate(`/product/search/${term}`)
+    }
   return (
     <div className='navbar navbar-expand-lg navbar-dark bg-dark px-4 py-2 stikey-top shadow'>
         <div className='contianer-fluid'>
@@ -11,12 +19,20 @@ export const Navbar = () => {
            <FaAmazon className='fs-2 text-warning me-2'/>
            <span className='fs-2 fw-bold text-white '>Amazon</span>
         </div>
-
+       <form className='d-flex mx-auto search-container' onSubmit={handelsubmit}>
         <div className='d-flex mx-auto search-container'>
-            <input type='search'className='form-control search-input' placeholder='Search for products, brands and more'/>
-            <button className='btn btn-warning search-button'><CiSearch /></button>
+            <input
+              type='search'
+              className='form-control search-input'
+              placeholder='Search for products, brands and more'
+              value={term}
+              onChange={(e) => setTerm(e.target.value)}
+            />
+            <button className='btn btn-warning search-button' onClick={
+                (e)=> setTerm(e.target.value)
+            }><CiSearch /></button>
         </div>
-
+        </form>
         <div className='d-flex align-items-center gap-3'>
             <Link to='/cart' className='text-white text-decoration-none position-relative card-btn'>
                 <BsCart4 className='fs-4' />

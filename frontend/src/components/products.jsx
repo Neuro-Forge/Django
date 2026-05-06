@@ -1,12 +1,15 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link , useLocation} from 'react-router-dom'
 import { shopbycategory as Shopbycategory } from './shopbycategory'
 
 
 export const Products = ({items}) => {
+  const { pathname } = useLocation()
   return (
     <>
-      <Shopbycategory />
+
+    {(pathname === '/' || pathname === '/products') && <Shopbycategory />}
+      
       <div className='container my-5'>
         <div className='row d-flex justify-content-center'>
         {items?.map((product, index) => (
@@ -29,8 +32,8 @@ export const Products = ({items}) => {
                   <span className='badge bg-warning'>★★★★☆ (4.5)</span>
                 </div>
                 <p className='price mb-2'>₹{product.price}</p>
-                <button type="button" class="btn btn-primary btn-sm gap-2"> Buy now</button>
-                <button type="button" class="btn btn-secondary btn-sm">Add to cart</button>
+                <button type="button" className="btn btn-primary btn-sm gap-2"> Buy now</button>
+                <button type="button" className="btn btn-secondary btn-sm">Add to cart</button>
                 
               </div>
             </div>
