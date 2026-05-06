@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 export const Card = () => {
 
   const [formData, setFormData] = useState({
@@ -21,13 +22,15 @@ export const Card = () => {
   const handlesubmit= async(e) =>{
     e.preventDefault();
     try{
-      const response = await axios.post('http://127.0.0.1:8000/Login/',
+const response = await axios.post('http://127.0.0.1:8000/api/login/',
         {
              username:formData.email,
              password:formData.password,
       });
       alert("Login successful!");
       console.log(response.data);
+      useNavigate('/dashboard');
+
     }catch(error){
       if (error.response){
         alert(JSON.stringify(error.response.data));
@@ -37,7 +40,7 @@ export const Card = () => {
   return (
     <StyledWrapper>
       <div className="form-container">
-        <form className="form">
+        <form className="form" onSubmit={handlesubmit}>
           <div className="flex-column">
             <label>Email </label></div>
           <div className="inputForm">
