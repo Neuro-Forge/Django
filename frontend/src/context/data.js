@@ -253,7 +253,55 @@ export const items = [
     amazonLink:"#",
     description:"ASUS ProArt PX13 (2026) 13-inch (33.02 cm) Laptop (Intel Core i7-13700H, 32GB RAM, 1TB SSD, NVIDIA GeForce RTX 4060, Windows 11 Pro) - Star Black",
     price:"3,59,900"
-  }
+  },
+{
+  id:28,
+  category:"tablets",
+  title:"Lenovo Yoga Tab Plus",
+  imgSrc:"https://m.media-amazon.com/images/I/81mhinhy7UL._SL1500_.jpg",
+  amazonLink:"#",
+  description:"Lenovo Yoga Tab Plus Smartchoice AI Tablet with Pen + Keyboard 12.7-inch (33 cm) Display, 3K Resolution, 144 Hz|16GB RAM, 512GB ROM|Snapdragon 8 Gen 3|10200 mAh|6 Speakers|USB 3.0 with DP-Out 1Year ADP Free|Teal",
+  price:"1,29,900"
+
+
+},
+{
+  id:29,
+  category:"overhead",
+  title:"JBL Live 770NC",
+  imgSrc:"https://m.media-amazon.com/images/I/71dnHOwbEqL._SL1500_.jpg",
+  amazonLink:"#",
+  description:"JBL Live 770NC True Adaptive Noise Cancellation Headphones Wireless Over Ear, Spatial Sound, 65Hrs Playtime, Speed Charge, Multipoint Connect & Personi-Fi 2.0, Customized EQ, Google Fast Pair, Black",
+  price:"29990"
+},
+{ 
+  id:30,
+  category:"overhead",
+  title:"Boat Rockerz 650 Pro",
+  imgSrc:"https://m.media-amazon.com/images/I/61faDMBMdmL._SL1500_.jpg",
+  amazonLink:"#",
+  description:"Boat Rockerz 650 Pro, Touch/Swipe Controls, Dolby Audio, 80Hrs Battery, 2Mics ENx, Fast Charge, App Support, Dual Pair, Bluetooth Over Ear Headphones with Mic(Starry Night)",
+  price:"3990"
+
+},
+{
+  id:31,
+  category:"overhead",
+  title:"Rockerz Prime 415",
+  imgSrc:"https://m.media-amazon.com/images/I/515FFUliZ-L._SL1500_.jpg",
+  amazonLink:"#",
+  description:"Boat 2025 Launch Rockerz Prime 415, 360 Spatial Audio, 120H Battery, 40mm Drivers, AI-ENx Tech, Beast Mode, ASAP Charge & App Support, Bluetooth Headphones, Wireless Headphone with Mic (White Sabre)",
+  price:'1,799'
+},
+{
+  id:32,
+  category:"overhead",
+  title:"Airwave Max XR ",
+  imgSrc:"https://m.media-amazon.com/images/I/51lPcFkwYmL._SL1500_.jpg",
+  amazonLink:"#",
+  description:"Noise Newly Launched Airwave Max XR Wireless Over-Ear Headphones with 120H Playtime, ANC, HFA Tech, Spatial Audio, Dual Pairing,BT V6.0(Pearl Beige)",
+  price:"3,499"
+},
 
 ];
 
