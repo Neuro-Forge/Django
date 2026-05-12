@@ -28,9 +28,7 @@ export const Navbar = () => {
               value={term}
               onChange={(e) => setTerm(e.target.value)}
             />
-            <button className='btn btn-warning search-button' onClick={
-                (e)=> setTerm(e.target.value)
-            }><CiSearch /></button>
+            <button className='btn btn-warning search-button' type="submit"><CiSearch /></button>
         </div>
         </form>
         <div className='d-flex align-items-center gap-3'>

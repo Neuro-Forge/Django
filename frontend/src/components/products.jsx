@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link , useLocation} from 'react-router-dom'
 import { shopbycategory as Shopbycategory } from './shopbycategory'
-
-
+import Datacontext from '../context/datacontext'
+import { ToastContainer, toast, Bounce} from 'react-toastify';
 export const Products = ({items}) => {
+  
+  const {addtocart} = useContext(Datacontext)
+  
   const { pathname } = useLocation()
   return (
     <>
-
+    <ToastContainer/>
     {(pathname === '/' || pathname === '/products') && <Shopbycategory />}
       
       <div className='container my-5'>
@@ -33,7 +36,9 @@ export const Products = ({items}) => {
                 </div>
                 <p className='price mb-2'>₹{product.price}</p>
                 <button type="button" className="btn btn-primary btn-sm gap-2"> Buy now</button>
-                <button type="button" className="btn btn-secondary btn-sm">Add to cart</button>
+                <button type="button" className="btn btn-secondary btn-sm" 
+                onClick={() => Search_product(product.id, product.title, product.price, product.imgSrc)}
+                >Add to cart</button>
                 
               </div>
             </div>
