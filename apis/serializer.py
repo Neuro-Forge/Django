@@ -3,7 +3,7 @@ from rest_framework.decorators import api_view
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from django.contrib.auth.password_validation import validate_password
-
+from .models import cartitems
 @api_view(['POST'])
 class loginserializer(serializers.Serializer):
     username = serializers.CharField(required=True)
@@ -21,5 +21,9 @@ class loginserializer(serializers.Serializer):
                 attrs['user'] = user
                 return attrs
             
-        
+@api_view(['POST'])
+class CartItemSerializer(serializers.ModelSerializer):
 
+   class Meta:
+       model = cartitems
+       fields = '__all__'

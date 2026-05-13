@@ -27,7 +27,10 @@ from django.contrib.auth import authenticate, login as auth_login
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-
+from .models import cartitems
+from .serializer import CartItemSerializer
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import permission_classes
 
 
 @api_view(['POST'])
@@ -48,3 +51,30 @@ def login(request):
         return Response({"message": "login successful"}, status=status.HTTP_200_OK)
     else:
         return Response({"error": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)  
+    
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def getcart(request):
+    
+    cart_items = cartitems.objects.filter(user = request.user)
+    serializer = CartItemSerializer(cart_items, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def addtocart(request):
+    
+    data = request.data
+    cartitems.objects.create(
+        
+        user = request.user,
+        product_id = data['product_id'],
+        product_category = data['product_category'],
+        product_title = data['product_title'],
+        product_imgSrc = data['product_imgSrc'],
+        product_description = data['product_description'],
+        product_price = data['product_price']
+        
+    )
+    
+    return Response({'messege': "Product added to cart"}, status=status.HTTP_200_OK)

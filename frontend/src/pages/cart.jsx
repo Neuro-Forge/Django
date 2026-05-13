@@ -1,11 +1,49 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Datacontext from '../context/datacontext'
 import styled from 'styled-components';
+import axios from 'axios'
 
 export const Cart = () => {
 
-  const { cart } = useContext(Datacontext)
+  // CHANGED HERE
+  const { cart, setCart } = useContext(Datacontext)
+
+  // ADDED THIS
+  const token = localStorage.getItem("token")
+
+  // UPDATED THIS ENTIRE useEffect
+  useEffect(() => {
+
+    const fetchCart = async () => {
+
+      try {
+
+        const response = await axios.post(
+          "http://127.0.0.1:8000/api/getcart/",
+          {},
+          {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          }
+        )
+
+
+        // ADDED THIS
+        setCart(response.data)
+
+      } catch (error) {
+
+        console.log(error)
+
+      }
+
+    }
+
+    fetchCart()
+
+  }, [])
 
   return (
     <div className='container my-5'>
