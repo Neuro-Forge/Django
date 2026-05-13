@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { FaAmazon } from "react-icons/fa6";
 import { BsCart4 } from "react-icons/bs";
 import { CiSearch } from "react-icons/ci";
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Datacontext from '../context/datacontext';
+import { ToastContainer, toast, Bounce} from 'react-toastify';
 export const Navbar = () => {
     const [term, setTerm] = useState('')
     const navigate = useNavigate()
+    const { cart } = useContext(Datacontext)
     const handelsubmit = (e) => {
         e.preventDefault()
         navigate(`/product/search/${term}`)
@@ -34,10 +37,13 @@ export const Navbar = () => {
         <div className='d-flex align-items-center gap-3'>
             <Link to='/cart' className='text-white text-decoration-none position-relative card-btn'>
                 <BsCart4 className='fs-4' />
-                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                  99+
+                {cart.length > 0 &&(
+                   <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  {cart.length}
                  <span className="visually-hidden">unread messages</span>
-               </span>
+               </span> 
+                )}
+                
             </Link>
             <form>
                 <ul className='navbar-abv max-auto d-flex gap-2'>
