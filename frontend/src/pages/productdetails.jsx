@@ -2,10 +2,11 @@ import React, { useContext, useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 import Datacontext from '../context/datacontext'
 import { Products } from '../components/products'
-
+import { ToastContainer, toast, Bounce} from 'react-toastify';
 export const Product_details = () => {
   const { id } = useParams()
-  const { products: allProducts } = useContext(Datacontext) || {}
+  const { addtocart, products: allProducts } = useContext(Datacontext) || {}
+
 
   const product = useMemo(() => {
     if (!allProducts) return null
@@ -50,8 +51,11 @@ export const Product_details = () => {
           <p className="fs-4">₹{product.price}</p>
           <p>{product.description}</p>
           <div className="flex-row-1 mb-3">
-          <button type="button" className="btn btn-primary btn-lg me-2 ">Buy Now</button>
-          <button type="button" className="btn btn-secondary btn-lg">Add to Cart</button>
+          <button type="button" className="btn btn-primary btn-sm gap-3"> Buy now</button>
+                <button type="button" className="btn btn-secondary btn-sm" 
+                onClick={() => addtocart(product.id, product.title, product.price, product.imgSrc)}
+                >Add to cart</button>
+
           </div>
         </div>
       </div>

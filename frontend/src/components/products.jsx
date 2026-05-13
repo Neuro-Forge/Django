@@ -37,7 +37,7 @@ export const Products = ({items}) => {
                 <p className='price mb-2'>₹{product.price}</p>
                 <button type="button" className="btn btn-primary btn-sm gap-2"> Buy now</button>
                 <button type="button" className="btn btn-secondary btn-sm" 
-                onClick={() => Search_product(product.id, product.title, product.price, product.imgSrc)}
+                onClick={() => addtocart(product.id, product.title, product.price, product.imgSrc)}
                 >Add to cart</button>
                 
               </div>
