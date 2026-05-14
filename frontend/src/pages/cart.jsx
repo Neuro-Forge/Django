@@ -12,38 +12,35 @@ export const Cart = () => {
   // ADDED THIS
   const token = localStorage.getItem("token")
 
-  // UPDATED THIS ENTIRE useEffect
+ 
   useEffect(() => {
 
-    const fetchCart = async () => {
+  const fetchCart = async () => {
 
-      try {
+    try {
 
-        const response = await axios.post(
-          "http://127.0.0.1:8000/api/getcart/",
-          {},
-          {
-            headers: {
-              Authorization: `Bearer ${token}`
-            }
+      const response = await axios.get(
+        "http://127.0.0.1:8000/api/Cart/",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
           }
-        )
+        }
+      )
 
+      setCart(response.data)
 
-        // ADDED THIS
-        setCart(response.data)
+    } catch (error) {
 
-      } catch (error) {
-
-        console.log(error)
-
-      }
+      console.log("Cart fetch error:", error)
 
     }
 
-    fetchCart()
+  }
 
-  }, [])
+  fetchCart()
+
+}, [])
 
   return (
     <div className='container my-5'>
