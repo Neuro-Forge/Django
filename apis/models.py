@@ -23,3 +23,15 @@ class register(models.Model):
     def __str__(self):
         return self.username
     
+from django.db import models
+
+class CartItem(models.Model):
+
+    username = models.CharField(max_length=100)
+
+    product_id = models.IntegerField()
+
+    quantity = models.IntegerField(default=1)
+
+    def __str__(self):
+        return f"{self.username} - {self.product_id}"

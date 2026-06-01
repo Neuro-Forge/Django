@@ -6,59 +6,62 @@ import { items } from './data.js'
 export const datastate = (props) => {
     const [cart, setCart] = useState([])
     const [products, setProducts] = useState(items)
-  const  addtocart = async (id, title, price, imgSrc) => {
+  const addtocart = async (id, title, price, imgSrc) => {
+      const username = localStorage.getItem('username')
       const obj = { id, title, price, imgSrc };
 
-      const addtocart = async (product) => {
-
-  try {
-
-    const token = localStorage.getItem("token")
-
-    console.log("TOKEN:", token)
-
-    const response = await axios.post(
-      "http://127.0.0.1:8000/api/Cart/",
-      {
-        product_id: product.id,
-        product_category: product.category,
-        product_title: product.title,
-        product_imgSrc: product.imgSrc,
-        product_description: product.description,
-        product_price: product.price
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
+      if (!username) {
+        console.warn('Cannot add to cart: username not found in localStorage. Please log in first.')
+        toast.error('Please log in first', {
+          position: 'top-left',
+          autoClose: 1500,
+          theme: 'dark',
+        })
+        return
       }
-    )
 
-    console.log(response.data)
+      try {
+        const token = localStorage.getItem('token')
 
-  } catch (error) {
+        console.log('Adding to cart for user:', username, 'product:', id)
 
-    console.log(error.response?.data)
-    console.log(error.response?.status)
-    console.log(error)
+        const response = await axios.post(
+          'http://127.0.0.1:8000/api/Cart/',
+          {
+            username,
+            product_id: id,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          }
+        )
 
-  }
-
-}
-
-      toast.success('item added to cart successfully', {
-         position: "top-left",
-         autoClose: 1500,
-         hideProgressBar: false,
-         closeOnClick: false,
-         pauseOnHover: true,
-         draggable: true,
-         progress: undefined,
-         theme: "dark",
-        transition: Bounce,
-        });
-
-      setCart([...cart, obj]);
+        console.log('Cart response:', response.data)
+        setCart([...cart, obj])
+        
+        toast.success('item added to cart successfully', {
+           position: "top-left",
+           autoClose: 1500,
+           hideProgressBar: false,
+           closeOnClick: false,
+           pauseOnHover: true,
+           draggable: true,
+           progress: undefined,
+           theme: "dark",
+          transition: Bounce,
+          });
+        
+      } catch (error) {
+        console.error('Cart error:', error.response?.data || error.message)
+        toast.error('Failed to add item to cart', {
+          position: 'top-left',
+          autoClose: 1500,
+          theme: 'dark',
+        })
+        return
+      }
     }
     // Log for debugging
     console.log('datastate - products:', products.length)

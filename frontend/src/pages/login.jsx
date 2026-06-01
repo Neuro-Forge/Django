@@ -34,6 +34,7 @@ const response = await axios.post('http://127.0.0.1:8000/api/login/',
         withCredentials: true,
       }
       );
+      localStorage.setItem('username', formData.email);
       alert("Login successful!");
       console.log(response.data);
       navigate('/products');
