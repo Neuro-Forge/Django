@@ -29,7 +29,11 @@ const response = await axios.post('http://127.0.0.1:8000/api/login/',
         {
              username:formData.email,
              password:formData.password,
-      });
+      },
+      {
+        withCredentials: true,
+      }
+      );
       alert("Login successful!");
       console.log(response.data);
       navigate('/products');

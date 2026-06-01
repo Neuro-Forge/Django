@@ -9,10 +9,6 @@ export const Cart = () => {
   // CHANGED HERE
   const { cart, setCart } = useContext(Datacontext)
 
-  // ADDED THIS
-  const token = localStorage.getItem("token")
-
- 
   useEffect(() => {
 
   const fetchCart = async () => {
@@ -22,9 +18,7 @@ export const Cart = () => {
       const response = await axios.get(
         "http://127.0.0.1:8000/api/Cart/",
         {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
+          withCredentials: true,
         }
       )
 

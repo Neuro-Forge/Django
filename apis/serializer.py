@@ -1,29 +1,8 @@
-from rest_framework import serializers
-from rest_framework.decorators import api_view
-from django.contrib.auth import authenticate
-from django.contrib.auth.models import User
-from django.contrib.auth.password_validation import validate_password
-from .models import cartitems
-@api_view(['POST'])
-class loginserializer(serializers.Serializer):
-    username = serializers.CharField(required=True)
-    password = serializers.CharField(required=True, write_only=True)
+from  rest_framework import serializers
+from .models import register
 
+
+class registerserializer(serializers.ModelSerializer):
     class Meta:
-        model = User
-        fields = ['username', 'password']
-    def validate(self,attrs):
-        if attrs['username'] and attrs['password']:
-            user = authenticate(username=attrs['username'], password=attrs['password'])
-            if not user:
-                raise serializers.ValidationError("Invalid credentials")
-            else:
-                attrs['user'] = user
-                return attrs
-            
-@api_view(['POST'])
-class CartItemSerializer(serializers.ModelSerializer):
-
-   class Meta:
-       model = cartitems
-       fields = '__all__'
+        model = register
+        fields = '__all__'

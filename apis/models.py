@@ -13,3 +13,13 @@ class cartitems(models.Model):
 
     def __str__(self):
         return self.product_title
+
+class register(models.Model):
+    username = models.CharField(max_length=300)
+    email = models.EmailField(max_length=300)
+    password = models.CharField(max_length=300)
+    password2 = models.CharField(max_length=300)
+    
+    def __str__(self):
+        return self.username
+    

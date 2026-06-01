@@ -22,8 +22,9 @@ import debug_toolbar
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('home.urls')),
-    path('Login/', include('Login.urls')),
+    # Removed include('home.urls') because the `home` app isn't present.
+    # If you need a homepage app, run `python manage.py startapp home`
+    
     path('api/', include('apis.urls')),
     path('__debug__/', include(debug_toolbar.urls)),
     
