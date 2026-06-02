@@ -108,7 +108,12 @@ def Cart(request):
     else:
         item = CartItem.objects.create(
             username=username,
-            product_id=product_id
+            product_id=product_id,
+            product_title=request.data.get('product_title') or request.POST.get('product_title'),
+            product_imgSrc=request.data.get('product_imgSrc') or request.POST.get('product_imgSrc'),
+            product_price=request.data.get('product_price') or request.POST.get('product_price') or 0,
+            product_description=request.data.get('product_description') or request.POST.get('product_description'),
+            product_category=request.data.get('product_category') or request.POST.get('product_category'),
         )
 
     serializer = CartItemSerializer(item)

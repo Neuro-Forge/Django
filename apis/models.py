@@ -30,8 +30,18 @@ class CartItem(models.Model):
     username = models.CharField(max_length=100)
 
     product_id = models.IntegerField()
+    
+    product_title = models.CharField(max_length=300, blank=True, null=True)
+    
+    product_imgSrc = models.CharField(max_length=500, blank=True, null=True)
+    
+    product_price = models.FloatField(default=0)
+    
+    product_description = models.CharField(max_length=500, blank=True, null=True)
+    
+    product_category = models.CharField(max_length=300, blank=True, null=True)
 
     quantity = models.IntegerField(default=1)
 
     def __str__(self):
-        return f"{self.username} - {self.product_id}"
+        return f"{self.username} - {self.product_title}"

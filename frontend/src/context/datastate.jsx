@@ -30,6 +30,9 @@ export const datastate = (props) => {
           {
             username,
             product_id: id,
+            product_title: title,
+            product_imgSrc: imgSrc,
+            product_price: price,
           },
           {
             headers: {
